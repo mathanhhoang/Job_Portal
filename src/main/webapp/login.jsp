@@ -18,10 +18,12 @@
 							<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
 							<h5>Login</h5>
 						</div>
-						<%-- <c:if test="$(not empty succMsg)">
+						
+						<c:if test="${not empty succMsg }">
 							<h4 class="text-center text-danger">${succMsg}</h4>
 							<c:remove var="succMsg" />
-						</c:if> --%>
+						</c:if>
+						
 						<form action="login" method="post">
 							<div class="form-group">
 								<label>Email</label> <input type="email" required="required"

@@ -27,14 +27,23 @@
 
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
-			<c:if test="${not empty userobj }">
+			<c:if test="${userobj.role eq 'admin' }">
 				<a href="#" class="btn btn-light mr-1"><i
 					class="fas fa-user"></i> Admin</a>
-				<a href="#" class="btn btn-light"><i
+				<a href="logout" class="btn btn-light"><i
 					class="fas fa-sign-in-alt"></i> Đăng xuất</a>
-			</c:if>
+				</c:if>	
+			
+			<c:if test="${userobj.role eq 'user' }">
+				<a href="#" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal"><i
+					class="fas fa-user"></i> ${userobj.name}</a>
+				<a href="logout" class="btn btn-light"><i
+					class="fas fa-sign-in-alt"></i> Đăng xuất</a>
+				</c:if>
+				
+			
 
-			<c:if test="${empty userobj }">
+			<c:if test="${empty userobj}">
 				<a href="login.jsp" class="btn btn-light mr-1"><i
 					class="fas fa-sign-in-alt"></i> Đăng nhập</a>
 				<a href="signup.jsp" class="btn btn-light"><i
@@ -45,3 +54,48 @@
 		</form>
 	</div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin cá nhân</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="card">
+      		<div class="card-body">
+      			<div class="text-center text-primary">
+      				<i class="fas fa-user-circle fa-3x"></i>
+      			</div>
+      			<table class="table">
+      				<tbody>
+      					<tr>
+      						<th scope="row">Tên</th>
+      						<th>${userobj.name}</th>
+      					</tr>
+      					<tr>
+      						<th scope="row">Trình độ</th>
+      						<th>${userobj.qualification}</th>
+      					</tr>
+      					<tr>
+      						<th scope="row">Email</th>
+      						<th>${userobj.email}</th>
+      					</tr>
+      				</tbody>
+      			</table>
+      		</div>
+      	</div>
+      
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="edit_profile.jsp" class="btn btn-primary">Sửa</a>
+      </div>
+    </div>
+  </div>
+</div>

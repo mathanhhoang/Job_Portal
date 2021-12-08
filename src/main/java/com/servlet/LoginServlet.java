@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.DB.DBConnect;
+import com.dao.UserDAO;
 import com.entity.User;
 
 @WebServlet("/login")
@@ -28,8 +30,21 @@ public class LoginServlet extends HttpServlet{
 				session.setAttribute("userobj", u);
 				u.setRole("admin");
 				resp.sendRedirect("admin.jsp");
-			} else {
+			} 
+			
+			else {
 				
+				UserDAO dao = new UserDAO(DBConnect.getConn());
+				User user = dao.login(em, ps);
+				
+				if(user != null) {
+					session.setAttribute("userobj", user);
+					user.setRole("user");
+					resp.sendRedirect("home.jsp");
+				} else {
+					session.setAttribute("succMsg", "Sai TK & MK");
+					resp.sendRedirect("login.jsp");
+				}
 			}
 		
 		} catch (Exception e) {

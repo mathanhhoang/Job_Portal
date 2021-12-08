@@ -22,7 +22,7 @@
 <body>
 	<%@include file="all_component/navbar.jsp"%>
 	
-<%-- 	<% Connection conn = DBConnect.getConn(); 
+<%-- <% Connection conn = DBConnect.getConn(); 
 	out.println(conn); %> --%>
 
 	<div class="container-fluid back-img">
