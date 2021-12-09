@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h5 class="text-center text-primary">Tất cả công việc</h5>
+				<h3 class="text-center text-primary">Tất cả công việc</h3>
 				
 				<%
 				String loc = request.getParameter("loc");
@@ -76,8 +76,8 @@
 							<%=j.getPdate().toString()%>
 						</h6>
 						<div class="text-center">
-							<a href="one_view.jsp?id=<%=j.getId() %>"
-							class="btn btn-sm bg-success text-white">Xem thêm</a>
+							<a style="width: 80px" href="one_view.jsp?id=<%=j.getId() %>"
+							class="btn btn-sm bg-success text-white">Chi tiết</a>
 						</div>
 					</div>
 				</div>

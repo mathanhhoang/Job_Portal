@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add job</title>
+<title>Đăng việc làm</title>
 <%@include file="all_component/all_css.jsp"%>
 </head>
 <body style="background-color: #f0f1f2;">

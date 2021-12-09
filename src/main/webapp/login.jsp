@@ -16,7 +16,7 @@
 					<div class="card-body">
 						<div class="text-center">
 							<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
-							<h5>Login</h5>
+							<h5>Đăng nhập</h5>
 						</div>
 						
 						<c:if test="${not empty succMsg }">
@@ -31,11 +31,11 @@
 									aria-descruibedby="emailHelp" name="email">
 							</div>
 							<div class="form-group">
-								<label>Password</label> <input type="password"
+								<label>Mật khẩu</label> <input type="password"
 									required="required" class="form-control"
 									id="exampleInputPassword1" name="password">
 							</div>
-							<button type="submit" class="btn btn-primary badge-pill btn-block">Login</button>
+							<button type="submit" class="btn btn-primary badge-pill btn-block">Đăng nhập</button>
 						</form>
 					</div>
 				</div>

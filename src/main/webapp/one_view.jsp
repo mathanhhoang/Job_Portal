@@ -36,29 +36,38 @@
 				</c:if> --%>
 				
 				<div class="card mt-5">
+				
 					<div class="card-body">
 						<div class="text-center text-primary">
 							<i class="far fa-clipboard fa-2x"></i>
 						</div>
+						<h3 class="text-center text-primary">Chi tiết công việc</h3>
 						
-						<h6><%=j.getTitle()%></h6>
+						<h4><%=j.getTitle()%></h4>
 						<p><%=j.getDescription() %></p>
-						
-						<br>
+
 						<div class="form-row">
-							<div class="form-group col-md-3">
+							<div class="form-group col-md-4">
 								<input type="text" class="form-control form-control-sm"
 								value="Địa điểm: <%=j.getLocation()%>" readonly>
 							</div>
-							<div class="form-group col-md-3">
+							<div class="form-group col-md-4">
 								<input type="text" class="form-control form-control-sm"
 								value="Lĩnh vực: <%=j.getCategory()%>" readonly>
+							</div>
+							<div class="form-group col-md-4">
+								<input type="text" class="form-control form-control-sm"
+									value="Trạng thái: <%=j.getStatus()%>" readonly>
 							</div>
 						</div>
 						<h6>
 							Ngày đăng tuyển:
 							<%=j.getPdate().toString()%>
 						</h6>
+						<div class="text-center">
+							<a href="home.jsp"
+							class="btn btn-outline-info">Quay lại</a>
+						</div>
 					</div>
 				</div>
 			</div>

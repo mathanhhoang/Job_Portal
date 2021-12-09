@@ -35,9 +35,9 @@
 				</c:if>	
 			
 			<c:if test="${userobj.role eq 'user' }">
-				<a href="#" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal"><i
+				<a href="#" class="btn btn-outline-light mr-2" data-toggle="modal" data-target="#exampleModal"><i
 					class="fas fa-user"></i> ${userobj.name}</a>
-				<a href="logout" class="btn btn-light"><i
+				<a href="logout" class="btn btn-outline-light mr-2"><i
 					class="fas fa-sign-in-alt"></i> Đăng xuất</a>
 				</c:if>
 				
@@ -46,7 +46,7 @@
 			<c:if test="${empty userobj}">
 				<a href="login.jsp" class="btn btn-light mr-1"><i
 					class="fas fa-sign-in-alt"></i> Đăng nhập</a>
-				<a href="signup.jsp" class="btn btn-light"><i
+				<a href="signup.jsp" class="btn btn-light mr-1"><i
 					class="fas fa-user"></i> Đăng kí</a>
 			</c:if>
 

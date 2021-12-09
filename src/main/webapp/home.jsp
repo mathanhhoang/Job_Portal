@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h5 class="text-center text-primary">Tất cả công việc</h5>
+				<h3 class="text-center text-primary">Tất cả công việc</h3>
 				
 				<c:if test="${not empty succMsg }">
 					<h4 class="text-center text-danger">${succMsg}</h4>
@@ -61,7 +61,7 @@
 								</select>
 							</div>
 							
-							<button class="btn btn-success">Search</button>
+							<button class="btn btn-success"><i class="fas fa-search"></i> Tìm kiếm</button>
 						
 						</form>
 					
@@ -79,12 +79,12 @@
 							<i class="far fa-clipboard fa-2x"></i>
 						</div>
 						
-						<h6><%=j.getTitle()%></h6>
+						<h4><%=j.getTitle()%></h4>
 						
 						<%
 						if (j.getDescription().length() > 0 && j.getDescription().length() < 120) {
 						%>
-						<p><%=j.getDescription() %></p>.
+						<p><%=j.getDescription() %></p>
 						<%
 						} else {
 						%>
@@ -92,17 +92,17 @@
 						<% 
 						}
 						%>
-						
-						<br>
+
 						<div class="form-row">
-							<div class="form-group col-md-3">
+							<div class="form-group col">
 								<input type="text" class="form-control form-control-sm"
 								value="Địa điểm: <%=j.getLocation()%>" readonly>
 							</div>
-							<div class="form-group col-md-3">
+							<div class="form-group col">
 								<input type="text" class="form-control form-control-sm"
 								value="Lĩnh vực: <%=j.getCategory()%>" readonly>
 							</div>
+							
 						</div>
 						<h6>
 							Ngày đăng tuyển:
@@ -110,7 +110,7 @@
 						</h6>
 						<div class="text-center">
 							<a href="one_view.jsp?id=<%=j.getId() %>"
-							class="btn btn-sm bg-success text-white">Xem thêm</a>
+							class="btn btn-outline-success"><i class="fas fa-info-circle"></i> Xem chi tiết</a>
 						</div>
 					</div>
 				</div>
@@ -118,5 +118,6 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="all_component/footer.jsp"%>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit job</title>
+<title>Chỉnh sửa công việc</title>
 <%@include file="all_component/all_css.jsp"%>
 </head>
 <body style="background-color: #f0f1f2;">
@@ -35,7 +35,7 @@
 						Jobs j = dao.getJobById(id);
 						%>
 
-						<h5>Edit Jobs</h5>
+						<h5>Chỉnh sửa công việc</h5>
 					</div>
 
 					<form action="update" method="post">
