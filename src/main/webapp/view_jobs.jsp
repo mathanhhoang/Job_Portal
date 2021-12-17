@@ -64,13 +64,13 @@
 						<div class="text-center">
 							<a style="width: 80px;" href="edit_job.jsp?id=<%=j.getId()%>"
 								class="btn btn-sm bg-success text-white"><i class="fas fa-edit"></i> Sửa</a> 
-							<a style="width: 80px;" data-toggle="modal" data-target="#exampleModalCenter"
+							<a style="width: 80px;" href="delete?id=<%=j.getId()%>"
 								class="btn btn-sm bg-danger text-white"><i class="fas fa-trash"></i> Xóa</a>
 						</div>
 					</div>
 				</div>
 				<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<%-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,7 +88,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --%>
 				<%
 				}
 				%>
