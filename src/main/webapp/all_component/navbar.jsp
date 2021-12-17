@@ -22,6 +22,8 @@
 						class="fas fa-plus-circle"></i> Đăng việc làm</a></li>
 				<li class="nav-item"><a class="nav-link" href="view_jobs.jsp"><i
 						class="fas fa-eye"></i> Danh sách việc làm</a></li>
+				<li class="nav-item"><a class="nav-link" href="view_user.jsp"><i 
+						class="fas fa-user-friends"></i> Danh sách người dùng</a></li>
 			</c:if>
 
 

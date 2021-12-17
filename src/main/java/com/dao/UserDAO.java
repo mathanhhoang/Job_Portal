@@ -3,9 +3,12 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import com.entity.User;
-import com.mysql.cj.protocol.Resultset;
+
 
 public class UserDAO {
 	private Connection conn;
@@ -61,7 +64,83 @@ public class UserDAO {
 		}
 		return u;
 	}
-	
+	public User getUserById(int id) {
+		User j = null;
+
+		try {
+			String sql = "select * from user where id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				j = new User();
+				j.setId(rs.getInt(1));
+				j.setName(rs.getString(2));
+				j.setEmail(rs.getString(3));
+				j.setPassword(rs.getString(4));
+				j.setQualification(rs.getString(5));
+				j.setRole(rs.getString(6));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return j;
+
+	}
+	public List<User> getAllUserForName(String name) {
+		List<User> list = new ArrayList<User>();
+		User j = null;
+
+		try {
+			String sql = "select * from user where name like '%"+name+"%'";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				j = new User();
+				j.setId(rs.getInt(1));
+				j.setName(rs.getString(2));
+				j.setEmail(rs.getString(3));
+				j.setPassword(rs.getString(4));
+				j.setQualification(rs.getString(5));
+				j.setRole(rs.getString(6));
+				list.add(j);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+	public List<User> getAllUser() {
+		List<User> list = new ArrayList<User>();
+		User j = null;
+
+		try {
+			String sql = "select * from user order by id desc";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				j = new User();
+				j.setId(rs.getInt(1));
+				j.setName(rs.getString(2));
+				j.setEmail(rs.getString(3));
+				j.setPassword(rs.getString(4));
+				j.setQualification(rs.getString(5));
+				j.setRole(rs.getString(6));
+				list.add(j);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
 	public boolean updateUser(User u) {
 		boolean f = false;
 		try {
@@ -81,6 +160,26 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return f;
+	}
+	public boolean deleteUser(int id) {
+		boolean f = false;
+
+		try {
+
+			String sql = "delete from user where id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			int i = ps.executeUpdate();
+			if (i == 1) {
+				f = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return f;
 	}
 
