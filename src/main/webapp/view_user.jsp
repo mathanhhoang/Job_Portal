@@ -28,10 +28,10 @@
 					<c:remove var="succMsg" />
 				</c:if>
 					
-					<form class="form-inline" action="search_user.jsp" method="get">
+					<form class="form-search" action="search_user.jsp" method="get" style=" width: 100%; text-align: center;">
 						<div class="form-search box" style=" margin-bottom: 20px;">
-							<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success my-2 my-sm-0" ><i class="fas fa-search"></i>Tìm kiếm</button>
+							<input type="text" name="search" placeholder="Search Name" style="padding: 0;width: 30%;height: 35px;text-align: center;margin-right: 10px; border-radius: 7px;border: 2px solid #3F51B5">
+							<button class="btn-search" style="padding: 0;height: 35px;border-radius: 7px;border: 2px solid #3F51B5;color: white; background-color: #28a745;"><i class="fas fa-search"></i>Tìm kiếm</button>
 						</div>
 					</form>
 					<!--<div class="div-search" style="display: flex; margin-bottom: 20px; text-align: center; width: 100%;">
@@ -40,18 +40,15 @@
 						</div> -->
 					<div class="content" style="text-aglin: center; background-color: white;">
 						<div class="tablemain" style="text-aglin: center; width: 100%;">
-							<table class="table">
-								<thead class="thead-dark">
-									<tr>
-										<th scope="col">ID</th>
-										<th scope="col">Tên</th>
-										<th scope="col">Email</th>
-										<th scope="col">Trình độ</th>
-										<th scope="col">Chỉnh sửa</th>
-										<th scope="col">Xoá</th>
-									</tr>
-								</thead>
-								
+							<table border= "1" style="margin: auto;width: 100%;border: 2px solid #3F51B5">
+								<tr style="text-align: center;">
+									<th>ID</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>Qualification</th>
+									<th>Edit</th>
+									<th>Delete</th>
+								</tr>
 								
 								<%
 								UserDAO dao = new UserDAO(DBConnect.getConn());
@@ -59,13 +56,13 @@
 								for (User j : list) {
 								%>
 								<tr	style ="width: 100%;">
-									<td><%=j.getId()%></td>
-									<td><%=j.getName()%></td>
-									<td><%=j.getEmail()%></td>
-									<td><%=j.getQualification()%></td>
-									<td><a style="width: 80px;" href="edit_user.jsp?id=<%=j.getId()%>"
+									<td style="width: 80px;text-align: center;"><%=j.getId()%></td>
+									<td	style="width: 180px;"><%=j.getName()%></td>
+									<td	style="width: 220px;"><%=j.getEmail()%></td>
+									<td	style="width: 150px;text-align: center;"><%=j.getQualification()%></td>
+									<td	style="width: 100px;text-align: center;"><a style="width: 80px;" href="edit_user.jsp?id=<%=j.getId()%>"
 									class="btn btn-sm bg-success text-white"><i class="fas fa-edit"></i> Sửa</a> </td>
-									<td><a style="width: 80px;" href="deleteuser?id=<%=j.getId()%>"
+									<td	style="width: 100px;text-align: center;"><a style="width: 80px;" href="deleteuser?id=<%=j.getId()%>"
 									class="btn btn-sm bg-danger text-white"><i class="fas fa-trash"></i> Xóa</a></td>
 								</tr>
 							<%

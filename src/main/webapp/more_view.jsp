@@ -27,16 +27,30 @@
 				<h3 class="text-center text-primary">Tất cả công việc</h3>
 				
 				<%
+
+				String title = request.getParameter("search");
 				String loc = request.getParameter("loc");
 				String cat = request.getParameter("cat");
 				String msg = "";
 				
 				JobDAO dao = new JobDAO(DBConnect.getConn());
 				List<Jobs> list = null;
-				if("lo".equals(loc) && "ca".equals(cat)) {
+				if( title == "" && "lo".equals(loc) && "ca".equals(cat)) {
 					list = new ArrayList<Jobs>();
 					msg = "Không có công việc phù hợp";
-				} else if ("lo".equals(loc) || "ca".equals(cat)) {
+				} else if (title != "" && "lo".equals(loc)  && "ca".equals(cat)) {
+					list = dao.getJobs(title);
+					msg = "1";
+				} else if (title != "" && "lo".equals(loc)== false  && "ca".equals(cat)== false ) {
+					list = dao.getJobs(title,cat,loc);
+					msg = "2";
+				} else if (title != "" &&  ("lo".equals(loc)== false  || "ca".equals(cat)== false  ) ) {
+					
+					if(title != "" && "lo".equals(loc) && "ca".equals(cat) == false)
+						list = dao.getJobsOR(title,cat,loc);
+					else list = dao.getJobsOr(title, loc);	
+					msg = "3";
+				} else if (title == "" && ("lo".equals(loc) || "ca".equals(cat))) {
 					list = dao.getJobsORLocationAndCate(cat, loc);
 				} else {
 					list = dao.getJobsAndLocationAndCate(cat, loc);
@@ -44,15 +58,14 @@
 				
 				if (list.isEmpty()) {
 				%>
-				<h4 class="text-center text-danger">Không hợp lệ</h4>
+				<h4 class="text-center text-danger">Không hợp lệ  </h4>
 				<%
 				}
 				
 				if (list != null) {
 					for (Jobs j : list) { 
 				
-				%>			
-				
+				%>
 				<div class="card mt-2">
 					<div class="card-body">
 						<div class="text-center text-primary">
