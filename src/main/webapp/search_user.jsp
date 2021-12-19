@@ -28,10 +28,10 @@
 					<c:remove var="succMsg" />
 				</c:if>
 					<div>
-					<form class="form-search" action="search_user.jsp" method="get" style=" width: 100%; text-align: center;">
-						<div class="form-search box" style=" margin-bottom: 10px;">
-							<input type="text" name="search" placeholder="Search Name" style="padding: 0;width: 30%;height: 35px;text-align: center;margin-right: 10px; border-radius: 7px;border: 2px solid #3F51B5;">
-							<button class="btn-search" style="padding: 0;height: 35px;border-radius: 7px;border: 2px solid #3F51B5;color: white; background-color: #28a745;"><i class="fas fa-search"></i> Tìm kiếm </button>
+					<form class="form-inline" action="search_user.jsp" method="get">
+						<div class="form-search box" style=" margin-bottom: 20px;">
+							<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" ><i class="fas fa-search"></i>Tìm kiếm</button>
 						</div>
 					</form>
 					</div>
@@ -40,20 +40,22 @@
 							<button class="btn btn-success" style="border-radius: 7px;"><i class="fas fa-search"></i> Tìm kiếm</button>
 						</div> -->
 						<div style="text-align: center;margin-bottom: 10px;">
-								<a href="view_user.jsp"><button style="padding: 0;width: 10%;height: 30px;border-radius: 7px;border: 2px solid #3F51B5;color: white; background-color: #3F51B5;"><i class="fas fa-users"></i> Tất cả </button></a>
+								<a type="button" class="btn btn-info" href="view_user.jsp"><i class="fas fa-users"></i> Xem tất cả</a>
 						</div>
 					<div class="content" style="text-aglin: center; background-color: white;">
 						<div class="tablemain" style="text-aglin: center; width: 100%;">
 					
-							<table border= "1" style="margin: auto;width: 100%;border: 2px solid #3F51B5">
-								<tr style="text-align: center;">
-									<th>ID</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Qualification</th>
-									<th>Edit</th>
-									<th>Delete</th>
-								</tr>
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">Tên</th>
+										<th scope="col">Email</th>
+										<th scope="col">Trình độ</th>
+										<th scope="col">Chỉnh sửa</th>
+										<th scope="col">Xoá</th>
+									</tr>
+								</thead>
 								
 								<%
 								String name = request.getParameter("search");
@@ -66,13 +68,13 @@
 									for (User j : list) {
 								%>
 								<tr	style ="width: 100%;">
-									<td style="width: 80px;text-align: center;"><%=j.getId()%></td>
-									<td	style="width: 180px;"><%=j.getName()%></td>
-									<td	style="width: 220px;"><%=j.getEmail()%></td>
-									<td	style="width: 150px;text-align: center;"><%=j.getQualification()%></td>
-									<td	style="width: 100px;text-align: center;"><a style="width: 80px;" href="edit_user.jsp?id=<%=j.getId()%>"
+									<td><%=j.getId()%></td>
+									<td><%=j.getName()%></td>
+									<td><%=j.getEmail()%></td>
+									<td><%=j.getQualification()%></td>
+									<td><a style="width: 80px;" href="edit_user.jsp?id=<%=j.getId()%>"
 									class="btn btn-sm bg-success text-white"><i class="fas fa-edit"></i> Sửa</a> </td>
-									<td	style="width: 100px;text-align: center;"><a style="width: 80px;" href="deleteuser?id=<%=j.getId()%>"
+									<td	><a style="width: 80px;" href="deleteuser?id=<%=j.getId()%>"
 									class="btn btn-sm bg-danger text-white"><i class="fas fa-trash"></i> Xóa</a></td>
 								</tr>
 							<%
