@@ -34,15 +34,21 @@
 					<div class="card-body">
 					
 						<form class="form-inline" action="more_view.jsp" method="get">
-							<div class="form-group col-md-5 mt-1">
+							<div class="form-group col-md-4 mt-1">
+								<h5>Tên công việc</h5>
+							</div>
+							<div class="form-group col-md-3 mt-1">
 								<h5>Địa điểm</h5>
 							</div>
 							
-							<div class="form-group col-md-4 mt-1">
+							<div class="form-group col-md-3 mt-1">
 								<h5>Lĩnh vực</h5>
 							</div>
-							
-							<div class="form-group col-md-5">
+							<div  class="form-group col-md-4">
+								<input type="text" class="form-control"
+									id="search" name="search" style="width: 90%;" placeholder="Nhập tên công việc....">
+							</div>
+							<div class="form-group col-md-3">
 								<select name="loc" class="custom-select" id="inlineFormCustomSelectPref">
 									<option selected value="lo">Chọn...</option>
 									<option value="TP.HCM">TP.HCM</option>
@@ -51,7 +57,7 @@
 								</select>
 							</div>
 							
-							<div class="form-group col-md-5">
+							<div class="form-group col-md-3">
 								<select name="cat" class="custom-select" id="inlineFormCustomSelectPref">
 									<option selected value="ca">Chọn...</option>
 									<option value="IT">IT</option>
@@ -67,7 +73,6 @@
 					
 					</div>
 				</div>
-				
 				<%
 				JobDAO dao = new JobDAO(DBConnect.getConn());
 				List<Jobs> list = dao.getAllJobsForUser();
