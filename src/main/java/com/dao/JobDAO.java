@@ -240,10 +240,10 @@ public class JobDAO {
 		
 		Jobs j = null;
 		try {
-			String sql = "select * from jobs where title LIKE ? order by id DESC";
+			String sql = "select * from jobs where title LIKE '%"+title+"%' order by id DESC";
 				
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, title);
+			//ps.setString(1, title);
 			
 			
 			ResultSet rs = ps.executeQuery();
