@@ -30,8 +30,8 @@
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 			<c:if test="${userobj.role eq 'admin' }">
-				<a href="#" class="btn btn-light mr-1"><i
-					class="fas fa-user"></i> Admin</a>
+				<a href="#" class="btn btn-warning text-white mr-1"><i
+					class="fas fa-crown"></i> Admin</a>
 				<a href="logout" class="btn btn-light"><i
 					class="fas fa-sign-in-alt"></i> Đăng xuất</a>
 				</c:if>	
