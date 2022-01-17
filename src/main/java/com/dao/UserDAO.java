@@ -182,5 +182,28 @@ public class UserDAO {
 
 		return f;
 	}
+	
+	public User getUserByEmail(String email) {
+		User j = null;
+
+		try {
+			String sql = "select * from user where email=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				j = new User();
+				j.setId(rs.getInt(1));
+				j.setName(rs.getString(2));
+				j.setEmail(rs.getString(3));
+				j.setPassword(rs.getString(4));
+				j.setQualification(rs.getString(5));
+				j.setRole(rs.getString(6));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return j;
+	}
 
 }
