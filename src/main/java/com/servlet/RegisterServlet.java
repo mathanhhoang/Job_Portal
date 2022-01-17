@@ -25,19 +25,26 @@ public class RegisterServlet extends HttpServlet {
 			String qua = req.getParameter("qua");
 			String email = req.getParameter("email");
 			String ps = req.getParameter("ps");
-		
-			UserDAO dao = new UserDAO(DBConnect.getConn());
-		
-			User u = new User(name, email, ps, qua, "User");
-			boolean f = dao.addUser(u);
+
 			HttpSession session = req.getSession();
-			if(f) {
-				session.setAttribute("succMsg", "Đăng kí thành công!");
-				resp.sendRedirect("signup.jsp");
-			} else {
-				session.setAttribute("succMsg", "Đã xảy ra lỗi!");
+			
+			UserDAO dao = new UserDAO(DBConnect.getConn());
+			if(dao.getUserByEmail(email) != null){
+				session.setAttribute("succMsg", "Email đã tồn tại!");
 				resp.sendRedirect("signup.jsp");
 			}
+			else {
+				User u = new User(name, email, ps, qua, "User");
+				boolean f = dao.addUser(u);
+				if(f) {
+					session.setAttribute("succMsg", "Đăng kí thành công!");
+					resp.sendRedirect("signup.jsp");
+				} else {
+					session.setAttribute("succMsg", "Đã xảy ra lỗi!");
+					resp.sendRedirect("signup.jsp");
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
